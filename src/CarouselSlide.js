@@ -30,7 +30,7 @@ const CarouselSlide = ({
 CarouselSlide.propTypes = {
   Img: PropTypes.elementType,
   imgHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  imgUrl: PropTypes.node.isRequired,
+  imgUrl: PropTypes.string.isRequired,
   description: PropTypes.node.isRequired,
   attribution: PropTypes.node,
 };

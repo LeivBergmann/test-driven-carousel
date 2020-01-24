@@ -7,12 +7,12 @@ export default (Component, propName, upperBoundPropName) =>
       Component.name})`;
 
     static propTypes = {
-      [propName]: PropTypes.string.isRequired,
+      [propName]: PropTypes.number.isRequired,
+      [`${propName}Increment`]: PropTypes.func.isRequired,
       [upperBoundPropName]: PropTypes.oneOfType([
         PropTypes.number,
         PropTypes.array,
       ]).isRequired,
-      [`${propName}Increment`]: PropTypes.func.isRequired,
       autoAdvanceDelay: PropTypes.number.isRequired,
     };
 
@@ -25,9 +25,9 @@ export default (Component, propName, upperBoundPropName) =>
     }
 
     componentDidUpdate(prevProps) {
-      if(
+      if (
         prevProps[propName] !== this.props[propName] ||
-        prevProps[upperBoundPropName] != this.props[upperBoundPropName]
+        prevProps[upperBoundPropName] !== this.props[upperBoundPropName]
       ) {
         this.startTimer();
       }
@@ -39,11 +39,11 @@ export default (Component, propName, upperBoundPropName) =>
 
     startTimer() {
       clearTimeout(this._timer);
-      if(!this.props.autoAdvanceDelay) return;
+      if (!this.props.autoAdvanceDelay) return;
 
       let upperBound;
       if (typeof this.props[upperBoundPropName] === 'number') {
-       upperBound = this.props[upperBoundPropName]; 
+        upperBound = this.props[upperBoundPropName];
       } else if (this.props[upperBoundPropName] != null) {
         upperBound = this.props[upperBoundPropName].length;
       }

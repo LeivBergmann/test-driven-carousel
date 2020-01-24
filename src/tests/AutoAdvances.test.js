@@ -1,12 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import AutoAdvances from '../AutoAdvanced';
+import AutoAdvances from '../AutoAdvances';
 
 describe('AutoAdvances()', () => {
   const MockComponent = () => null;
-
   MockComponent.displayName = 'MockComponent';
-
   const MockComponentWithAutoAdvance = AutoAdvances(
     MockComponent,
     'index',
@@ -50,7 +48,7 @@ describe('AutoAdvances()', () => {
 
   it('does not set a timer if `autoAdvanceDelay` is 0', () => {
     wrapper.setProps({ index: 1, autoAdvanceDelay: 0 });
-    jest.advanceTimersByTime(99999);
+    jest.advanceTimersByTime(999999);
     expect(indexIncrement).not.toHaveBeenCalled();
   });
 

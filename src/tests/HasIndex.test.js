@@ -7,7 +7,7 @@ describe('HasIndex()', () => {
   MockComponent.displayName = 'MockComponent';
   const MockComponentWithIndex = HasIndex(MockComponent, 'index');
 
-  it('has the excepted displayName', () => {
+  it('has the expected displayName', () => {
     expect(MockComponentWithIndex.displayName).toBe(
       'HasIndex(MockComponent)'
     );
