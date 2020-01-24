@@ -57,7 +57,7 @@ export class Carousel extends React.PureComponent {
       </div>
     );
   }
-}
+} 
 
 export default HasIndex(
   AutoAdvances(Carousel, 'slideIndex', 'slides'),
