@@ -7,8 +7,7 @@ export default (Component, indexPropName) => {
   const defaultIndexPropName = `default${capitalize(indexPropName)}`;
 
   return class ComponentWithIndex extends React.PureComponent {
-    static displayName = `HasIndex(${Component.displayName ||
-      Component.name})`;
+    static displayName = `HasIndex(${Component.displayName || Component.name})`;
 
     static propTypes = {
       [indexPropName]: PropTypes.number,
@@ -27,7 +26,6 @@ export default (Component, indexPropName) => {
       ) {
         return { index: props[indexPropName] };
       }
-
       return null;
     }
 
@@ -68,10 +66,7 @@ export default (Component, indexPropName) => {
     };
 
     render() {
-      const {
-        [defaultIndexPropName]: _defaultIndexProp,
-        ...rest
-      } = this.props;
+      const { [defaultIndexPropName]: _defaultIndexProp, ...rest } = this.props;
       const indexProps = {
         [indexPropName]: this.state.index,
         [`${indexPropName}Decrement`]: this.handleDecrement,

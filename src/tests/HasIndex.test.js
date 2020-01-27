@@ -20,12 +20,12 @@ describe('HasIndex()', () => {
 
   it('has initial `index` state equal to the `defaultIndex` prop', () => {
     expect(wrapper.state('index')).toBe(0);
-    const wrapper2 = shallow(<MockComponentWithIndex defaultIndex={1} />);
+    let wrapper2 = shallow(<MockComponentWithIndex defaultIndex={1} />);
     expect(wrapper2.state('index')).toBe(1);
   });
 
   it('always has `index` state equal to the `index` prop', () => {
-    const wrapperWithInitialIndex = shallow(
+    let wrapperWithInitialIndex = shallow(<MockComponentWithIndex index={1} />);
       <MockComponentWithIndex index={1} />
     );
     expect(wrapperWithInitialIndex.state('index')).toBe(1);
@@ -34,11 +34,9 @@ describe('HasIndex()', () => {
   });
 
   it('allows `index` state to change if the `index` prop is unset', () => {
-    const wrapperWithInitialIndex = shallow(
-      <MockComponentWithIndex index={1} />
-    );
+    let wrapperWithInitialIndex = shallow(<MockComponentWithIndex index={1} />);
     wrapperWithInitialIndex.setProps({ index: undefined });
-    wrapperWithInitialIndex.setState({ index: 3});
+    wrapperWithInitialIndex.setState({ index: 3 });
     expect(wrapperWithInitialIndex.state('index')).toBe(3);
   });
 
