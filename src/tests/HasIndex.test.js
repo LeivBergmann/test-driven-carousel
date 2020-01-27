@@ -26,8 +26,6 @@ describe('HasIndex()', () => {
 
   it('always has `index` state equal to the `index` prop', () => {
     let wrapperWithInitialIndex = shallow(<MockComponentWithIndex index={1} />);
-      <MockComponentWithIndex index={1} />
-    );
     expect(wrapperWithInitialIndex.state('index')).toBe(1);
     wrapper.setProps({ index: 2 });
     expect(wrapper.state('index')).toBe(2);
